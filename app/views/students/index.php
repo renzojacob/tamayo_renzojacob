@@ -48,6 +48,12 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
+    .pagination-link {
+      transition: all 0.3s ease;
+    }
+    .pagination-link:hover {
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body class="min-h-screen font-poppins flex items-center justify-center p-4 md:p-8">
@@ -125,9 +131,49 @@
     </div>
     
     <!-- PAGINATION -->
-    <div class="mt-4 flex justify-center">
+    <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-sm text-slate-600">
+        Showing <span class="font-semibold">1-10</span> of <span class="font-semibold"><?= count($users) * 5 ?></span> students
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <!-- Previous Button -->
+        <a href="#" class="pagination-link inline-flex items-center gap-1 px-4 py-2 bg-white/70 border border-gray-300 rounded-lg text-slate-700 font-medium hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
+          <i class="fas fa-chevron-left text-xs"></i>
+          <span>Previous</span>
+        </a>
+        
+        <!-- Page Numbers -->
+        <div class="flex items-center gap-1">
+          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md transition-all duration-300">
+            1
+          </a>
+          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-white/70 border border-gray-300 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
+            2
+          </a>
+          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-white/70 border border-gray-300 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
+            3
+          </a>
+          <span class="px-2 text-slate-500">...</span>
+          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-white/70 border border-gray-300 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
+            8
+          </a>
+        </div>
+        
+        <!-- Next Button -->
+        <a href="#" class="pagination-link inline-flex items-center gap-1 px-4 py-2 bg-white/70 border border-gray-300 rounded-lg text-slate-700 font-medium hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
+          <span>Next</span>
+          <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- If you want to keep your original PHP pagination, you can use this instead: -->
+    <!--
+    <div class="mt-6">
       <?=$page ?? ''?>
     </div>
+    -->
     
     <!-- FOOTER -->
     <div class="text-center text-sm text-slate-500 pt-4 border-t border-gray-200/50">
@@ -139,10 +185,22 @@
     // Add some interactive effects
     document.addEventListener('DOMContentLoaded', function() {
       const tableRows = document.querySelectorAll('tbody tr');
+      const paginationLinks = document.querySelectorAll('.pagination-link');
       
       tableRows.forEach(row => {
         row.addEventListener('mouseenter', function() {
           this.style.transition = 'all 0.3s ease';
+        });
+      });
+      
+      // Add active state to pagination
+      paginationLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          paginationLinks.forEach(l => l.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-purple-600', 'text-white', 'shadow-md'));
+          paginationLinks.forEach(l => l.classList.add('bg-white/70', 'border', 'border-gray-300', 'text-slate-700'));
+          this.classList.remove('bg-white/70', 'border', 'border-gray-300', 'text-slate-700');
+          this.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-purple-600', 'text-white', 'shadow-md');
         });
       });
     });
