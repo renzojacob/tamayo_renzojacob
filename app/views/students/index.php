@@ -48,11 +48,55 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
-    .pagination-link {
+    
+    /* Pagination styling that works with Lavalust generated HTML */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .pagination a, .pagination span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.5rem;
+      height: 2.5rem;
+      padding: 0 0.75rem;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
       transition: all 0.3s ease;
     }
-    .pagination-link:hover {
-      transform: translateY(-2px);
+    
+    .pagination a {
+      background: white;
+      border: 1px solid #e2e8f0;
+      color: #4a5568;
+    }
+    
+    .pagination a:hover {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+    }
+    
+    .pagination .current {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: white;
+      border: 1px solid transparent;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+    }
+    
+    .pagination .disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: #f7fafc;
+      color: #a0aec0;
     }
   </style>
 </head>
@@ -133,47 +177,21 @@
     <!-- PAGINATION -->
     <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="text-sm text-slate-600">
-        Showing <span class="font-semibold">1-10</span> of <span class="font-semibold"><?= count($users) * 5 ?></span> students
+        Showing page <?= isset($current_page) ? $current_page : '1' ?> of results
       </div>
       
-      <div class="flex items-center gap-2">
-        <!-- Previous Button -->
-        <a href="#" class="pagination-link inline-flex items-center gap-1 px-4 py-2 bg-white/70 border border-gray-300 rounded-lg text-slate-700 font-medium hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
-          <i class="fas fa-chevron-left text-xs"></i>
-          <span>Previous</span>
-        </a>
-        
-        <!-- Page Numbers -->
-        <div class="flex items-center gap-1">
-          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md transition-all duration-300">
-            1
-          </a>
-          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-white/70 border border-gray-300 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
-            2
-          </a>
-          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-white/70 border border-gray-300 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
-            3
-          </a>
-          <span class="px-2 text-slate-500">...</span>
-          <a href="#" class="pagination-link w-10 h-10 flex items-center justify-center bg-white/70 border border-gray-300 text-slate-700 font-medium rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
-            8
-          </a>
-        </div>
-        
-        <!-- Next Button -->
-        <a href="#" class="pagination-link inline-flex items-center gap-1 px-4 py-2 bg-white/70 border border-gray-300 rounded-lg text-slate-700 font-medium hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300">
-          <span>Next</span>
-          <i class="fas fa-chevron-right text-xs"></i>
-        </a>
+      <div class="pagination">
+        <?php 
+        // This will work with Lavalust's pagination structure
+        // The framework generates the pagination links automatically
+        echo $page ?? ''; 
+        ?>
+      </div>
+      
+      <div class="text-sm text-slate-600 hidden sm:block">
+        Navigate through pages
       </div>
     </div>
-    
-    <!-- If you want to keep your original PHP pagination, you can use this instead: -->
-    <!--
-    <div class="mt-6">
-      <?=$page ?? ''?>
-    </div>
-    -->
     
     <!-- FOOTER -->
     <div class="text-center text-sm text-slate-500 pt-4 border-t border-gray-200/50">
@@ -185,7 +203,6 @@
     // Add some interactive effects
     document.addEventListener('DOMContentLoaded', function() {
       const tableRows = document.querySelectorAll('tbody tr');
-      const paginationLinks = document.querySelectorAll('.pagination-link');
       
       tableRows.forEach(row => {
         row.addEventListener('mouseenter', function() {
@@ -193,15 +210,19 @@
         });
       });
       
-      // Add active state to pagination
+      // Enhance pagination buttons after page load
+      const paginationLinks = document.querySelectorAll('.pagination a');
       paginationLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          paginationLinks.forEach(l => l.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-purple-600', 'text-white', 'shadow-md'));
-          paginationLinks.forEach(l => l.classList.add('bg-white/70', 'border', 'border-gray-300', 'text-slate-700'));
-          this.classList.remove('bg-white/70', 'border', 'border-gray-300', 'text-slate-700');
-          this.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-purple-600', 'text-white', 'shadow-md');
-        });
+        link.classList.add('flex', 'items-center', 'justify-center');
+        
+        // Add icons for next/previous if they exist
+        if (link.textContent.includes('Next') || link.textContent.includes('»')) {
+          link.innerHTML = '<i class="fas fa-chevron-right ml-1"></i>';
+          link.title = 'Next page';
+        } else if (link.textContent.includes('Previous') || link.textContent.includes('«')) {
+          link.innerHTML = '<i class="fas fa-chevron-left mr-1"></i>';
+          link.title = 'Previous page';
+        }
       });
     });
   </script>
