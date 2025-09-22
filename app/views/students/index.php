@@ -14,6 +14,17 @@
       <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">
         📋 Student Records
       </h1>
+    <form method="get" action="<?=site_url()?>" class="mb-4 flex justify-end">
+    <input 
+      type="text" 
+      name="q" 
+      value="<?=html_escape($_GET['q'] ?? '')?>" 
+      placeholder="Search student..." 
+      class="px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500 w-64">
+    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r-lg shadow transition-all duration-300">
+      <i class="fa fa-search"></i>
+    </button>
+    </form>
       <a href="<?=site_url('students/create');?>"
          class="inline-block bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold px-6 py-3 rounded-2xl shadow-md hover:from-emerald-600 hover:to-teal-700 transition duration-300 ease-in-out">
         + Add Student
@@ -54,6 +65,10 @@
           <?php endforeach; ?>
         </tbody>
       </table>
+    </div>
+          <!-- PAGINATION -->
+      <div class="mt-4 flex justify-center">
+        <?=$page ?? ''?>
     </div>
   </div>
 

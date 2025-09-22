@@ -13,15 +13,45 @@ class StudentController extends Controller {
 
         $this->call->database();
         $this->call->model('StudentModel');
+        $this->call->library('pagination');
+
     }
 
-    function index()
+    public function index()
     {
-        $data['users'] = $this->StudentModel->all();
+       $this->call->model('StudentModel');
+
+        $page = 1;
+        if(isset($_GET['page']) && ! empty($_GET['page'])) {
+            $page = $this->io->get('page');
+        }
+
+        $q = '';
+        if(isset($_GET['q']) && ! empty($_GET['q'])) {
+            $q = trim($this->io->get('q'));
+        }
+
+        $records_per_page = 2;
+
+        $users = $this->StudentModel->page($q, $records_per_page, $page);
+        $data['users'] = $users['records'];
+        $total_rows = $users['total_rows'];
+
+        $this->pagination->set_options([
+            'first_link'     => '⏮ First',
+            'last_link'      => 'Last ⏭',
+            'next_link'      => 'Next →',
+            'prev_link'      => '← Prev',
+            'page_delimiter' => '&page='
+        ]);
+        $this->pagination->set_theme('bootstrap');
+        $this->pagination->initialize($total_rows, $records_per_page, $page, 'students?q='.$q);
+        $data['page'] = $this->pagination->paginate();
+
         $this->call->view('students/index', $data);
     }
 
-    function create() 
+    public function create() 
     {
         if($this->io->method() == 'post') {
             $first_name = $this->io->post('first_name');
