@@ -16,7 +16,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
             background: #f8fafc;
-            color: #553333ff;
+            color: #334155;
         }
 
         .container {
@@ -142,7 +142,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                 </div>
                 <div class="card">
                     <h3>🔗 REST API Support</h3>
-                    <p>Build robust RESTful APIs easily using built-in tools and conventions.</p>
+                    <p>Build RESTful APIs easily using built-in tools and conventions.</p>
                 </div>
                 <div class="card">
                     <h3>📘 ORM-like Models</h3>

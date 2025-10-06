@@ -2,12 +2,12 @@
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 /**
- * Model: StudentsModel
+ * Model: UsersModel
  * 
  * Automatically generated via CLI.
  */
-class StudentModel extends Model {
-    protected $table = 'students';
+class UsersModel extends Model {
+    protected $table = 'user';
     protected $primary_key = 'id';
 
     public function __construct()
@@ -15,18 +15,17 @@ class StudentModel extends Model {
         parent::__construct();
     }
 
-
-     public function page($q = '', $records_per_page = null, $page = null) {
+    public function page($q = '', $records_per_page = null, $page = null) {
  
             if (is_null($page)) {
-                return $this->db->table('students')->get_all();
+                return $this->db->table('users')->get_all();
             } else {
-                $query = $this->db->table('students');
+                $query = $this->db->table('users');
 
                 // Build LIKE conditions
                 $query->like('id', '%'.$q.'%')
-                    ->or_like('first_name', '%'.$q.'%')
                     ->or_like('last_name', '%'.$q.'%')
+                      ->or_like('first_name', '%'.$q.'%')
                     ->or_like('email', '%'.$q.'%');
                     
                 // Clone before pagination
@@ -41,4 +40,5 @@ class StudentModel extends Model {
                 return $data;
             }
         }
+
 }
