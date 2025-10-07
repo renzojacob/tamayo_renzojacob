@@ -3,94 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Update User</title>
+  <title>Update</title>
+  <link rel="stylesheet" href="<?=base_url();?>/public/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-pink-200 via-pink-100 to-pink-300 min-h-screen flex items-center justify-center font-sans text-gray-800">
+<style>
+      body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;    
+      background: url('/public/images/bg_2.gif') center/cover no-repeat;
+      color: #333;
+    }
+        .custom-container{
+      background: rgba(255, 196, 242, 0.27); /* translucent white */
+      backdrop-filter: blur(5px); /* blur the bg behind */
+      -webkit-backdrop-filter: blur(5px);
+    }
+</style>
 
-  <div class="bg-white bg-opacity-90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl w-full max-w-md animate-fadeIn">
-    <h2 class="text-2xl font-semibold text-center text-pink-600 mb-6">📝 Update User</h2>
 
-    <form action="<?=site_url('users/update/'.$user['id'])?>" method="POST" class="space-y-4">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen ">
+
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md custom-container">
+    <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Update Account</h1>
+
+    <form action="<?=site_url('users/update/'.segment(4));?>" method="POST" class="space-y-4">
       
-      <!-- Username -->
       <div>
-        <label class="block text-pink-600 mb-1">Username</label>
-        <input type="text" name="username" value="<?= html_escape($user['username'])?>" required
-               class="w-full px-4 py-3 border border-pink-200 bg-pink-50 rounded-xl focus:ring-2 focus:ring-pink-300 focus:outline-none text-gray-800">
+        <label for="username"  class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" value="<?=html_escape($user['username']);?>" id="username" name="username" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
       </div>
 
-      <!-- Email -->
       <div>
-        <label class="block text-pink-600 mb-1">Email Address</label>
-        <input type="email" name="email" value="<?= html_escape($user['email'])?>" required
-               class="w-full px-4 py-3 border border-pink-200 bg-pink-50 rounded-xl focus:ring-2 focus:ring-pink-300 focus:outline-none text-gray-800">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" value="<?=html_escape($user['email']);?>" id="email" name="email" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
       </div>
 
-      <?php if(!empty($logged_in_user) && $logged_in_user['role'] === 'admin'): ?>
-        <!-- Role Dropdown for Admins -->
+      <?php if ($logged_in_user['role'] === 'admin'): ?>
         <div>
-          <label class="block text-pink-600 mb-1">Role</label>
-          <select name="role" required
-                  class="w-full px-4 py-3 border border-pink-200 bg-pink-50 rounded-xl focus:ring-2 focus:ring-pink-300 focus:outline-none text-gray-800">
-            <option value="user" <?= $user['role'] === 'user' ? 'selected' : ''; ?>>User</option>
-            <option value="admin" <?= $user['role'] === 'admin' ? 'selected' : ''; ?>>Admin</option>
-          </select>
-        </div>
-
-        <!-- Password Field for Admins -->
-        <div class="relative">
-          <label class="block text-pink-600 mb-1">Password</label>
-          <input type="password" name="password" id="password"
-                 placeholder="Leave blank to keep current password"
-                 class="w-full px-4 py-3 border border-pink-200 bg-pink-50 rounded-xl focus:ring-2 focus:ring-pink-300 focus:outline-none text-gray-800">
-          <i class="fa-solid fa-eye absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-pink-600" id="togglePassword"></i>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" name="password"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
         </div>
       <?php endif; ?>
+      
+      <div>     
+        <?php if ($logged_in_user['role'] === 'admin'): ?>
+            <label for="role">Role</label>
+            <select name="role">
+                <option value="admin" <?= $user['role']=='admin'?'selected':''; ?>>Admin</option>
+                <option value="user" <?= $user['role']=='user'?'selected':''; ?>>User</option>
+            </select>
+        <?php endif; ?>       
+      </div>
 
-      <!-- Submit Button -->
       <button type="submit"
-              class="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 rounded-xl shadow-md transition duration-200">
-        Update User
+        class="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200">
+        Update
       </button>
     </form>
-
-    <!-- Return Button -->
-    <a href="<?=site_url('/users');?>" class="mt-4 block text-center bg-pink-300 hover:bg-pink-400 text-white py-2 rounded-xl shadow transition">
-      ⬅ Return to Home
-    </a>
   </div>
 
-  <!-- Password Toggle Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const togglePassword = document.getElementById('togglePassword');
-      const password = document.getElementById('password');
-
-      if (togglePassword && password) {
-        togglePassword.addEventListener('click', function() {
-          const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-          password.setAttribute('type', type);
-
-          this.classList.toggle('fa-eye');
-          this.classList.toggle('fa-eye-slash');
-        });
-      }
-    });
-  </script>
-
-  <!-- Fade-in animation -->
-  <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fadeIn {
-      animation: fadeIn 0.8s ease;
-    }
-  </style>
-
-  <!-- FontAwesome for the eye icon -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 </body>
 </html>

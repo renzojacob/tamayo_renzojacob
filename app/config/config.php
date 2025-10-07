@@ -212,7 +212,7 @@ $config['language'] 				= 'en-US';
 $config['sess_driver']             = 'file';
 $config['sess_cookie_name']        = 'LLSession';
 $config['sess_expiration']         = 7200;
-$config['sess_save_path']          = APP_DIR .  'runtime/sessions/';
+$config['sess_save_path']          = 'APP_PATH.runtime/sessions/';
 $config['sess_match_ip']           = TRUE;
 $config['sess_match_fingerprint']  = TRUE;
 $config['sess_time_to_update']     = 300;
@@ -261,7 +261,7 @@ $config['cache_default_expires']   = 0;
 |
 |
 */
-$config['encryption_key']           = '';
+$config['encryption_key']           = 'h2Y8qM5vT9rE3xJ1pL6zC4kB7dN0wF2g';
 
 /*
 |--------------------------------------------------------------------------
