@@ -18,7 +18,7 @@
     .pagination a {
       display: inline-block;
       padding: 0.5rem 1rem;
-      background-color: #ec4899;
+      background-color: #48b8ecff;
       color: white;
       border-radius: 0.5rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -27,12 +27,12 @@
       transition: background-color 0.2s ease-in-out;
     }
     .pagination a:hover {
-      background-color: #db2777;
+      background-color: #157fa5ff;
     }
     .pagination strong {
       display: inline-block;
       padding: 0.5rem 1rem;
-      background-color: #be185d;
+      background-color: #18beb0ff;
       color: white;
       border-radius: 0.5rem;
       font-weight: 600;
@@ -44,7 +44,7 @@
 <body class="bg-gradient-to-br from-pink-200 via-pink-100 to-pink-300 min-h-screen font-sans text-gray-800">
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-pink-600 to-pink-400 shadow-md">
+  <nav class="bg-gradient-to-r from-pink-600 to-blue-400 shadow-md">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#" class="text-white font-semibold text-xl tracking-wide">📊 User Management</a>
       <!-- Logout button in navbar -->
@@ -62,7 +62,7 @@
 
       <!-- Logged In User Display -->
       <?php if(!empty($logged_in_user)): ?>
-        <div class="mb-8 bg-pink-100 text-pink-800 px-6 py-5 rounded-xl shadow-lg text-center">
+        <div class="mb-8 bg-pink-100 text-blue-800 px-6 py-5 rounded-xl shadow-lg text-center">
           <h2 class="text-3xl font-bold mb-1">
             Welcome, <span class="font-semibold"><?= html_escape($logged_in_user['username']); ?></span>!
           </h2>
@@ -76,7 +76,7 @@
 
       <!-- Header -->
       <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-semibold text-pink-600">👥 User Directory</h1>
+        <h1 class="text-2xl font-semibold text-blue-600">👥 User Directory</h1>
 
         <!-- Search Bar -->
         <form method="get" action="<?=site_url('users');?>" class="flex">
