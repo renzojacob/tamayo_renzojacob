@@ -7,7 +7,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
  * Automatically generated via CLI.
  */
 class UsersModel extends Model {
-    protected $table = 'users';
+    protected $table = 'user';
     protected $primary_key = 'id';
 
     public function __construct()
@@ -18,9 +18,9 @@ class UsersModel extends Model {
 
       public function page($q, $records_per_page = null, $page = null) {
             if (is_null($page)) {
-                return $this->db->table('users')->get_all();
+                return $this->db->table('user')->get_all();
             } else {
-                $query = $this->db->table('users');
+                $query = $this->db->table('user');
                 
                 // Build LIKE conditions
                 $query->like('id', '%'.$q.'%')
@@ -44,7 +44,7 @@ class UsersModel extends Model {
 
 public function page_users_only($q, $records_per_page = null, $page = null) 
 {
-    $query = $this->db->table('users')->where('role', 'user');
+    $query = $this->db->table('user')->where('role', 'user');
 
     if (!empty($q)) {
         // Instead of passing "both", add wildcards manually
@@ -73,7 +73,7 @@ public function page_users_only($q, $records_per_page = null, $page = null)
 
 
         function find_by_username($username) {
-            return $this->db->table('users')
+            return $this->db->table('user')
                             ->where('username', $username)
                             ->get();
 
@@ -82,7 +82,7 @@ public function page_users_only($q, $records_per_page = null, $page = null)
         }
 
         public function check_login($username, $password) {
-            $user = $this->db->table('users')
+            $user = $this->db->table('user')
                             ->where('username', $username)
                             ->get();
 
@@ -126,7 +126,7 @@ public function page_users_only($q, $records_per_page = null, $page = null)
 
         public function get_users_only()
         {
-            return $this->db->table('users')
+            return $this->db->table('user')
             ->select('id, username, email, role')
             ->where('role', 'user')
             ->get_all();
@@ -137,7 +137,7 @@ public function page_users_only($q, $records_per_page = null, $page = null)
         public function page_by_role($q, $limit, $page, $role) {
         $offset = ($page - 1) * $limit;
 
-        $builder = $this->db->table('users')
+        $builder = $this->db->table('user')
                             ->where('role', $role);
 
         if (!empty($q)) {
