@@ -13,7 +13,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: url('/public/images/bg_2.gif');
+      background: url('/public/images/bg_3.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;

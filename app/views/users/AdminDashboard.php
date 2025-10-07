@@ -13,7 +13,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;    
-      background: url('/public/images/bg_2.gif') center/cover no-repeat;
+      background: url('/public/images/bg_3.jpg') center/cover no-repeat;
       color: #333;
       height: 100vh; /* para laging kasing-taas ng viewport */
     }
