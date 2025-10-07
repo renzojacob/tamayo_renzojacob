@@ -61,9 +61,9 @@ $database['main'] = array(
     'driver'	=> 'mysql',
     'hostname'	=> 'sql12.freesqldatabase.com',
     'port'		=> '3306',
-    'username'	=> 'sql12801678',
-    'password'	=> 'MN6nC27CRA',
-    'database'	=> 'sql12801678',
+    'username'	=> 'sql12801845',
+    'password'	=> 'Hq3hzBk75h',
+    'database'	=> 'sql12801845',
     'charset'	=> 'utf8mb4',
     'dbprefix'	=> '',
     // Optional for SQLite
