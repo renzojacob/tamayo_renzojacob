@@ -36,25 +36,39 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
-| URI ROUTING
+| DATABASE CONNECTIVITY SETTINGS
 | -------------------------------------------------------------------
-| Here is where you can register web routes for your application.
+| This file will contain the settings needed to access your database.
+| -------------------------------------------------------------------
+| EXPLANATION OF VARIABLES
+| -------------------------------------------------------------------
 |
-|
+|	['driver'] 		The driver of your database server.
+|	['hostname'] 	The hostname of your database server.
+|	['port'] 		The port used by your database server.
+|	['username'] 	The username used to connect to the database
+|	['password'] 	The password used to connect to the database
+|	['database'] 	The name of the database you want to connect to
+|	['charset']		The default character set
+|   ['dbprefix']    You can add an optional prefix, which will be added
+|				    to the table name when using the  Query Builder class
+|   You can create new instance of the database by adding new element of
+|   $database variable.
+|   Example: $database['another_example'] = array('key' => 'value')
 */
 
-$router->match('/', 'UserController::register', ['GET','POST']);
 
-// Auth routes
-$router->match('/reg/register', 'UserController::register', ['GET','POST']);
-$router->match('/reg/login', 'UserController::login', ['GET','POST']);
-$router->get('/reg/logout', 'UserController::logout');
+$database['main'] = array(
+    'driver'	=> 'mysql',
+    'hostname'	=> 'sql12.freesqldatabase.com',
+    'port'		=> '3306',
+    'username'	=> 'sql12801586',
+    'password'	=> '5JvRMe5lP6',
+    'database'	=> 'sql12801586',
+    'charset'	=> 'utf8mb4',
+    'dbprefix'	=> '',
+    // Optional for SQLite
+    'path'      => ''
+);
 
-// Homepage (after login)
-$router->get('/users', 'UserController::index');
-$router->get('/users/dashboard', 'UserController::dashboard');
-
-// Users CRUD
-$router->match('/users/create', 'UserController::create', ['GET', 'POST']);
-$router->match('/users/update/{id}', 'UserController::update', ['GET', 'POST']);
-$router->get('/users/delete/{id}', 'UserController::delete');
+?>
