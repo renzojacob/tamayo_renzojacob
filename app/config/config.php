@@ -79,7 +79,7 @@ $config['ENVIRONMENT']             = 'development';
 | WARNING: You MUST set this value!
 |
 */
-$config['base_url'] 				= 'https://fernandezvina.onrender.com';
+$config['base_url'] 				= 'https://tamayo-renzojacobc.onrender.com';
 
 /*
 |--------------------------------------------------------------------------
