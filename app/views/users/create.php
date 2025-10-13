@@ -1,9 +1,3 @@
-<?php
-// Ensure $logged_in_user is defined to avoid undefined variable error
-if (!isset($logged_in_user)) {
-    $logged_in_user = ['role' => 'user']; // default to normal user if not set
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +29,7 @@ if (!isset($logged_in_user)) {
     
     .form-input {
       transition: all 0.3s ease;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e2e8f0;
     }
     
     .form-input:focus {
@@ -49,7 +43,6 @@ if (!isset($logged_in_user)) {
     }
     
     .btn-primary:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
     }
@@ -60,13 +53,12 @@ if (!isset($logged_in_user)) {
     }
     
     .btn-secondary:hover {
-      background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(107, 114, 128, 0.3);
     }
     
     .fade-in {
-      animation: fadeIn 0.6s ease-out;
+      animation: fadeIn 0.8s ease-out;
     }
     
     @keyframes fadeIn {
@@ -74,207 +66,234 @@ if (!isset($logged_in_user)) {
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .password-toggle {
-      transition: color 0.2s ease;
+    .slide-in {
+      animation: slideIn 0.8s ease-out;
     }
     
-    .password-toggle:hover {
-      color: #3b82f6;
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .pulse-slow {
+      animation: pulse 4s infinite;
+    }
+    
+    .role-select {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.75rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center text-gray-800 py-8">
 
-  <!-- Navigation Bar -->
-  <nav class="glass-effect shadow-lg fixed top-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <div class="bg-blue-600 p-2 rounded-lg">
-          <i class="fas fa-users text-white text-xl"></i>
+<body class="min-h-screen flex items-center justify-center text-gray-800 p-4">
+  <!-- Background decorative elements -->
+  <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+    <div class="absolute top-10 left-10 w-20 h-20 bg-blue-500 rounded-full opacity-10 floating"></div>
+    <div class="absolute top-1/4 right-20 w-16 h-16 bg-indigo-500 rounded-full opacity-10 floating" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-20 left-1/4 w-24 h-24 bg-purple-500 rounded-full opacity-10 floating" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-40 right-1/4 w-12 h-12 bg-pink-500 rounded-full opacity-10 floating" style="animation-delay: 1.5s;"></div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="w-full max-w-6xl flex flex-col md:flex-row items-center justify-between gap-12 z-10">
+    <!-- Left Side - Branding and Information -->
+    <div class="w-full md:w-1/2 flex flex-col items-start fade-in">
+      <div class="glass-effect rounded-2xl p-8 w-full max-w-md">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="bg-blue-600 p-3 rounded-xl shadow-lg">
+            <i class="fas fa-users text-white text-2xl"></i>
+          </div>
+          <h1 class="text-2xl font-bold text-gray-800">Corporate User Management</h1>
         </div>
-        <a href="#" class="text-xl font-bold text-gray-800">Corporate User Management</a>
+        
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Create New User Account</h2>
+        <p class="text-gray-600 mb-8">Add a new team member to your organization with appropriate access privileges and role permissions.</p>
+        
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="bg-blue-100 p-2 rounded-lg mt-1">
+              <i class="fas fa-shield-alt text-blue-600"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Role-Based Access Control</h3>
+              <p class="text-gray-600 text-sm">Assign appropriate permissions based on organizational roles.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3">
+            <div class="bg-green-100 p-2 rounded-lg mt-1">
+              <i class="fas fa-user-check text-green-600"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Secure Authentication</h3>
+              <p class="text-gray-600 text-sm">All accounts include enterprise-grade security measures.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3">
+            <div class="bg-purple-100 p-2 rounded-lg mt-1">
+              <i class="fas fa-cogs text-purple-600"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Easy Management</h3>
+              <p class="text-gray-600 text-sm">Update user details and permissions at any time.</p>
+            </div>
+          </div>
+        </div>
       </div>
       
-      <div class="flex items-center space-x-4">
-        <?php if(isset($logged_in_user) && !empty($logged_in_user)): ?>
-          <div class="hidden md:flex items-center space-x-1 text-gray-600">
-            <i class="fas fa-user-circle"></i>
-            <span><?= html_escape($logged_in_user['username'] ?? 'User'); ?></span>
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-2 gap-4 mt-8 w-full max-w-md">
+        <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-100">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Total Users</p>
+              <h3 class="text-xl font-bold text-gray-800">24</h3>
+            </div>
+            <div class="bg-blue-100 p-2 rounded-lg">
+              <i class="fas fa-users text-blue-600"></i>
+            </div>
           </div>
-          <a href="<?=site_url('reg/logout');?>" 
-             class="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium px-4 py-2 rounded-lg shadow hover:shadow-lg transition-all duration-300">
-             <i class="fas fa-sign-out-alt"></i>
-             <span>Logout</span>
-          </a>
-        <?php else: ?>
-          <a href="<?=site_url('/users'); ?>" 
-             class="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium px-4 py-2 rounded-lg shadow hover:shadow-lg transition-all duration-300">
-             <i class="fas fa-home"></i>
-             <span>Home</span>
-          </a>
-        <?php endif; ?>
+        </div>
+        
+        <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-100">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-gray-500 text-sm">Active Today</p>
+              <h3 class="text-xl font-bold text-gray-800">12</h3>
+            </div>
+            <div class="bg-green-100 p-2 rounded-lg">
+              <i class="fas fa-user-check text-green-600"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
 
-  <!-- Main Form Container -->
-  <div class="w-full max-w-lg mx-4 fade-in">
-    <div class="glass-effect rounded-2xl overflow-hidden">
-      
-      <!-- Form Header with Gradient -->
-      <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-8 text-center">
-        <div class="flex justify-center mb-4">
-          <div class="bg-white bg-opacity-20 p-4 rounded-full">
-            <i class="fas fa-user-plus text-white text-3xl"></i>
-          </div>
+    <!-- Right Side - Form -->
+    <div class="w-full md:w-1/2 flex justify-center slide-in">
+      <div class="glass-effect rounded-2xl p-8 w-full max-w-lg">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold text-gray-800 mb-2">Create User Account</h1>
+          <p class="text-gray-600">Add a new user to your organization</p>
         </div>
-        <h1 class="text-3xl font-bold mb-2">Create New User</h1>
-        <p class="text-blue-100">Add a new user to the corporate management system</p>
-      </div>
-      
-      <!-- Form Content -->
-      <div class="p-8">
+
         <form id="user-form" action="<?=site_url('users/create/')?>" method="POST" class="space-y-6">
-          
-          <!-- Username Field -->
+          <!-- Username -->
           <div>
-            <label for="username" class="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-              <i class="fas fa-user mr-2 text-blue-500"></i>
-              Username
+            <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-user mr-2 text-blue-500"></i>Username
             </label>
             <div class="relative">
-              <input type="text" 
-                     id="username"
-                     name="username" 
-                     placeholder="Enter username" 
-                     required
+              <input type="text" name="username" id="username" placeholder="Enter username" required
                      value="<?= isset($username) ? html_escape($username) : '' ?>"
-                     class="w-full px-4 py-3 pl-11 form-input rounded-xl focus:outline-none text-gray-800">
+                     class="w-full px-4 py-3 pl-11 form-input rounded-xl focus:outline-none text-gray-800 bg-white">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="fas fa-user text-gray-400"></i>
               </div>
             </div>
           </div>
 
-          <!-- Email Field -->
+          <!-- Email -->
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-              <i class="fas fa-envelope mr-2 text-blue-500"></i>
-              Email Address
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-envelope mr-2 text-blue-500"></i>Email Address
             </label>
             <div class="relative">
-              <input type="email" 
-                     id="email"
-                     name="email" 
-                     placeholder="Enter email address" 
-                     required
+              <input type="email" name="email" id="email" placeholder="Enter email address" required
                      value="<?= isset($email) ? html_escape($email) : '' ?>"
-                     class="w-full px-4 py-3 pl-11 form-input rounded-xl focus:outline-none text-gray-800">
+                     class="w-full px-4 py-3 pl-11 form-input rounded-xl focus:outline-none text-gray-800 bg-white">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="fas fa-envelope text-gray-400"></i>
               </div>
             </div>
           </div>
 
-          <!-- Password Field -->
+          <!-- Password with toggle -->
           <div>
-            <label for="password" class="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-              <i class="fas fa-lock mr-2 text-blue-500"></i>
-              Password
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+              <i class="fas fa-lock mr-2 text-blue-500"></i>Password
             </label>
             <div class="relative">
-              <input type="password" 
-                     id="password"
-                     name="password" 
-                     placeholder="Create a secure password" 
-                     required
-                     class="w-full px-4 py-3 pl-11 pr-11 form-input rounded-xl focus:outline-none text-gray-800">
+              <input type="password" name="password" id="password" placeholder="Enter password" required
+                     class="w-full px-4 py-3 pl-11 pr-11 form-input rounded-xl focus:outline-none text-gray-800 bg-white">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="fas fa-lock text-gray-400"></i>
               </div>
               <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                <i class="fas fa-eye password-toggle cursor-pointer text-gray-400 hover:text-blue-500" id="togglePassword"></i>
+                <i class="fa-solid fa-eye text-gray-400 cursor-pointer hover:text-gray-600" id="togglePassword"></i>
               </div>
             </div>
-            <p class="text-xs text-gray-500 mt-2">Use at least 8 characters with a mix of letters, numbers, and symbols</p>
+            <div class="mt-2 flex items-center text-xs text-gray-500">
+              <i class="fas fa-info-circle mr-1"></i>
+              <span>Password must be at least 8 characters long</span>
+            </div>
           </div>
 
-          <!-- Role Field (Admin Only) -->
+          <!-- Role -->
           <?php if($logged_in_user['role'] === 'admin'): ?>
             <div>
-              <label for="role" class="block text-sm font-medium text-gray-700 mb-2 flex items-center">
-                <i class="fas fa-user-tag mr-2 text-blue-500"></i>
-                User Role
+              <label for="role" class="block text-sm font-medium text-gray-700 mb-2">
+                <i class="fas fa-user-tag mr-2 text-blue-500"></i>User Role
               </label>
               <div class="relative">
-                <select id="role" 
-                        name="role" 
-                        required
-                        class="w-full px-4 py-3 pl-11 form-input rounded-xl focus:outline-none text-gray-800 appearance-none">
-                  <option value="" disabled selected>Select a role</option>
-                  <option value="user">User</option>
+                <select name="role" id="role" required
+                        class="w-full px-4 py-3 pl-11 pr-10 form-input rounded-xl focus:outline-none text-gray-800 bg-white role-select">
+                  <option value="" disabled selected>Select User Role</option>
+                  <option value="user">Standard User</option>
                   <option value="admin">Administrator</option>
                   <option value="manager">Manager</option>
-                  <option value="editor">Editor</option>
+                  <option value="editor">Content Editor</option>
                 </select>
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <i class="fas fa-user-tag text-gray-400"></i>
                 </div>
-                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <i class="fas fa-chevron-down text-gray-400"></i>
-                </div>
               </div>
-              <p class="text-xs text-gray-500 mt-2">Administrators have full system access</p>
+              <div class="mt-2 flex items-center text-xs text-gray-500">
+                <i class="fas fa-info-circle mr-1"></i>
+                <span>Admins have full system access</span>
+              </div>
             </div>
           <?php else: ?>
             <!-- Normal users can only create a user account -->
             <input type="hidden" name="role" value="user">
           <?php endif; ?>
 
-          <!-- Submit Button -->
-          <div class="pt-4">
-            <button type="submit"
-                    class="w-full btn-primary text-white font-semibold py-4 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center space-x-2">
-              <i class="fas fa-user-plus"></i>
-              <span>Create User Account</span>
-            </button>
-          </div>
+          <!-- Submit -->
+          <button type="submit"
+                  class="w-full btn-primary text-white font-semibold py-3 rounded-xl shadow-md transition duration-300 flex items-center justify-center space-x-2">
+            <i class="fas fa-user-plus"></i>
+            <span>Create User Account</span>
+          </button>
         </form>
 
-        <!-- Return to Home Button -->
-        <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+        <!-- Return to Dashboard -->
+        <div class="text-center mt-8 pt-6 border-t border-gray-200">
           <a href="<?=site_url('/users'); ?>" 
-             class="btn-secondary text-white font-medium py-3 px-6 rounded-xl shadow-md transition-all duration-300 inline-flex items-center space-x-2">
+             class="inline-flex items-center space-x-2 btn-secondary text-white font-medium py-3 px-6 rounded-xl shadow-md transition duration-300">
             <i class="fas fa-arrow-left"></i>
-            <span>Return to User Directory</span>
+            <span>Return to User Dashboard</span>
           </a>
         </div>
       </div>
     </div>
-    
-    <!-- Additional Info Section -->
-    <div class="mt-8 glass-effect rounded-2xl p-6 text-center">
-      <h3 class="font-semibold text-gray-700 mb-2">Need help with user management?</h3>
-      <p class="text-gray-600 text-sm">Contact your system administrator for assistance with user roles and permissions.</p>
-    </div>
   </div>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white w-full mt-12 fixed bottom-0">
-    <div class="max-w-7xl mx-auto px-6 py-4 text-center text-sm">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="flex items-center space-x-2 mb-2 md:mb-0">
-          <div class="bg-blue-600 p-1 rounded">
-            <i class="fas fa-users text-white text-xs"></i>
-          </div>
-          <span>Corporate User Management System</span>
-        </div>
-        <div class="text-gray-400">
-          &copy; <?= date('Y'); ?> All rights reserved.
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <!-- Password Toggle Script -->
   <script>
@@ -288,27 +307,32 @@ if (!isset($logged_in_user)) {
           password.type = type;
           this.classList.toggle('fa-eye');
           this.classList.toggle('fa-eye-slash');
-          
-          // Change color when active
-          if (password.type === 'text') {
-            this.classList.add('text-blue-500');
-            this.classList.remove('text-gray-400');
-          } else {
-            this.classList.remove('text-blue-500');
-            this.classList.add('text-gray-400');
+        });
+      }
+      
+      // Form validation and enhancement
+      const form = document.getElementById('user-form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          const password = document.getElementById('password');
+          if (password && password.value.length < 8) {
+            e.preventDefault();
+            alert('Password must be at least 8 characters long');
+            password.focus();
           }
         });
       }
       
       // Add focus effects to form inputs
-      const formInputs = document.querySelectorAll('.form-input');
-      formInputs.forEach(input => {
+      const inputs = document.querySelectorAll('.form-input');
+      inputs.forEach(input => {
         input.addEventListener('focus', function() {
-          this.parentElement.classList.add('ring-2', 'ring-blue-200');
+          this.parentElement.classList.add('ring-2', 'ring-blue-500', 'ring-opacity-50');
+          this.parentElement.classList.remove('ring-0');
         });
         
         input.addEventListener('blur', function() {
-          this.parentElement.classList.remove('ring-2', 'ring-blue-200');
+          this.parentElement.classList.remove('ring-2', 'ring-blue-500', 'ring-opacity-50');
         });
       });
     });
