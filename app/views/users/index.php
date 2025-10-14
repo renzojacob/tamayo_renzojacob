@@ -3,135 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Directory | Enterprise Management System</title>
+  <title>User Directory | Corporate Management System</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            premium: {
-              blue: '#1e40af',
-              indigo: '#3730a3',
-              purple: '#6d28d9',
-              gray: '#374151',
-              dark: '#111827'
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+            accent: {
+              50: '#fdf4ff',
+              100: '#fae8ff',
+              200: '#f5d0fe',
+              300: '#f0abfc',
+              400: '#e879f9',
+              500: '#d946ef',
+              600: '#c026d3',
+              700: '#a21caf',
+              800: '#86198f',
+              900: '#701a75',
+            },
+            neutral: {
+              50: '#fafafa',
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              700: '#404040',
+              800: '#262626',
+              900: '#171717',
             }
+          },
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+            'medium': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03)',
+            'large': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            'xl-soft': '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
           },
           animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'slide-down': 'slideDown 0.6s ease-out',
+            'pulse-soft': 'pulseSoft 2s infinite',
             'float': 'float 6s ease-in-out infinite',
-            'glow': 'glow 2s ease-in-out infinite alternate',
-            'slide-in': 'slideIn 0.6s ease-out',
-            'fade-in': 'fadeIn 0.8s ease-out'
           },
           keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' }
-            },
-            glow: {
-              '0%': { 'box-shadow': '0 0 20px rgba(59, 130, 246, 0.3)' },
-              '100%': { 'box-shadow': '0 0 30px rgba(59, 130, 246, 0.6)' }
-            },
-            slideIn: {
-              '0%': { opacity: '0', transform: 'translateX(-20px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' }
-            },
             fadeIn: {
               '0%': { opacity: '0' },
-              '100%': { opacity: '1' }
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideDown: {
+              '0%': { opacity: '0', transform: 'translateY(-20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            pulseSoft: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0.85' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
             }
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
           }
         }
       }
     }
   </script>
-
+  
   <style>
     * {
       font-family: 'Inter', sans-serif;
     }
     
     body {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      background-image: url('https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+      background-size: cover;
+      background-position: center;
       background-attachment: fixed;
-      min-height: 100vh;
+      background-color: #0f172a;
     }
     
-    .premium-glass {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
     }
     
-    .premium-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-      backdrop-filter: blur(15px);
+    .glass-effect-dark {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .premium-card:hover {
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .card-hover:hover {
       transform: translateY(-8px);
-      border-color: rgba(59, 130, 246, 0.3);
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
-    }
-    
-    .stats-gradient-1 {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    }
-    
-    .stats-gradient-2 {
-      background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
-    }
-    
-    .stats-gradient-3 {
-      background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
-    }
-    
-    .stats-gradient-4 {
-      background: linear-gradient(135deg, #f59e0b 0%, #d946ef 100%);
-    }
-    
-    .user-avatar {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     }
     
     .role-badge {
       display: inline-flex;
       align-items: center;
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 50px;
       font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    
-    .role-admin {
-      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-      color: white;
-    }
-    
-    .role-user {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: white;
-    }
-    
-    .role-manager {
-      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-      color: white;
-    }
-    
-    .role-editor {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      color: white;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     
     .pagination {
@@ -139,451 +146,638 @@
       gap: 0.5rem;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
     
     .pagination a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem 1.25rem;
-      background: rgba(59, 130, 246, 0.2);
-      color: #93c5fd;
-      border-radius: 12px;
+      padding: 0.6rem 1.2rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #475569;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      font-weight: 500;
+      transition: all 0.3s ease-in-out;
+      border: 1px solid rgba(226, 232, 240, 0.6);
     }
     
     .pagination a:hover {
-      background: rgba(59, 130, 246, 0.4);
+      background-color: #0ea5e9;
+      color: white;
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 8px 15px rgba(14, 165, 233, 0.2);
     }
     
     .pagination strong {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem 1.25rem;
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
       color: white;
-      border-radius: 12px;
-      font-weight: 700;
-      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+      border-radius: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(14, 165, 233, 0.25);
     }
     
-    .search-input {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-      transition: all 0.3s ease;
+    .fade-in {
+      animation: fadeIn 0.7s ease-in-out;
     }
     
-    .search-input:focus {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(59, 130, 246, 0.5);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    .user-card {
+      animation: slideUp 0.6s ease-out;
     }
     
-    .search-input::placeholder {
-      color: #9ca3af;
+    .stats-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+      color: #1e293b;
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      position: relative;
+      overflow: hidden;
     }
     
-    .btn-primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      transition: all 0.3s ease;
+    .stats-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0ea5e9 0%, #d946ef 100%);
     }
     
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.4);
+    .stats-card:nth-child(2)::before {
+      background: linear-gradient(90deg, #f97316 0%, #eab308 100%);
     }
     
-    .btn-success {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      transition: all 0.3s ease;
+    .stats-card:nth-child(3)::before {
+      background: linear-gradient(90deg, #10b981 0%, #0ea5e9 100%);
     }
     
-    .btn-success:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.4);
+    .stats-card:nth-child(4)::before {
+      background: linear-gradient(90deg, #8b5cf6 0%, #d946ef 100%);
     }
     
-    .action-btn {
-      transition: all 0.3s ease;
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(217, 70, 239, 0.1) 100%);
+      filter: blur(40px);
+      z-index: -1;
     }
     
-    .action-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-    }
-    
-    .floating-element {
+    .floating-shape-1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      right: -100px;
       animation: float 8s ease-in-out infinite;
     }
     
-    .particle {
+    .floating-shape-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      left: -50px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    
+    .sidebar-nav {
+      position: sticky;
+      top: 100px;
+    }
+    
+    .sidebar-item {
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .sidebar-item:hover, .sidebar-item.active {
+      background-color: rgba(14, 165, 233, 0.08);
+      border-left-color: #0ea5e9;
+    }
+    
+    .sidebar-item.active {
+      font-weight: 600;
+      color: #0ea5e9;
+    }
+    
+    .notification-dot {
       position: absolute;
-      background: rgba(59, 130, 246, 0.1);
+      top: 8px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      animation: float 12s ease-in-out infinite;
+      background-color: #ef4444;
+      animation: pulseSoft 2s infinite;
+    }
+    
+    .search-highlight {
+      background-color: rgba(254, 240, 138, 0.4);
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+    
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+    }
+    
+    .user-avatar.admin {
+      background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+    }
+    
+    .user-avatar.manager {
+      background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+    }
+    
+    .user-avatar.editor {
+      background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulseSoft {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
     }
     
     .gradient-text {
-      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+      background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+    
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+    }
+    
+    @media (max-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar-nav {
+        position: static;
+        margin-bottom: 2rem;
+      }
+    }
   </style>
 </head>
 
-<body class="min-h-screen text-white">
+<body class="min-h-screen text-neutral-800">
 
-  <!-- Animated Background Particles -->
-  <div class="fixed inset-0 overflow-hidden pointer-events-none">
-    <div class="particle w-6 h-6 top-1/4 left-1/5" style="animation-delay: 0s;"></div>
-    <div class="particle w-8 h-8 top-1/3 right-1/5" style="animation-delay: 2s;"></div>
-    <div class="particle w-4 h-4 bottom-1/4 left-1/3" style="animation-delay: 4s;"></div>
-    <div class="particle w-7 h-7 bottom-1/3 right-1/3" style="animation-delay: 6s;"></div>
-    <div class="particle w-5 h-5 top-2/3 left-2/3" style="animation-delay: 8s;"></div>
+  <!-- Floating Background Shapes -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="floating-shape floating-shape-1"></div>
+    <div class="floating-shape floating-shape-2"></div>
   </div>
 
-  <!-- Premium Navigation -->
-  <nav class="premium-glass sticky top-0 z-50 border-b border-white/10">
-    <div class="max-w-8xl mx-auto px-8 py-5">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center space-x-4">
-          <div class="floating-element">
-            <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-2xl shadow-2xl">
-              <i class="fas fa-users-cog text-white text-2xl"></i>
-            </div>
+  <!-- Navbar -->
+  <nav class="glass-effect shadow-lg sticky top-0 z-50 border-b border-white/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="bg-gradient-to-br from-primary-600 to-accent-500 p-2.5 rounded-xl shadow-medium">
+          <i class="fas fa-users-cog text-white text-xl"></i>
+        </div>
+        <div>
+          <a href="#" class="text-xl font-bold text-neutral-800">Corporate User Management</a>
+          <p class="text-xs text-neutral-500 mt-0.5">Enterprise User Directory</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center space-x-6">
+        <div class="hidden md:flex items-center space-x-4">
+          <!-- Notifications -->
+          <div class="relative">
+            <button class="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-colors">
+              <i class="fas fa-bell"></i>
+            </button>
+            <span class="notification-dot"></span>
           </div>
-          <div>
-            <h1 class="text-2xl font-black gradient-text">Enterprise User Management</h1>
-            <p class="text-gray-400 text-sm font-medium">Premium Corporate Platform</p>
+          
+          <!-- Messages -->
+          <div class="relative">
+            <button class="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-colors">
+              <i class="fas fa-envelope"></i>
+            </button>
+            <span class="notification-dot bg-amber-500"></span>
+          </div>
+          
+          <!-- User Profile -->
+          <div class="flex items-center space-x-3 bg-white/80 rounded-xl px-3 py-2 shadow-soft border border-white/50">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-accent-400 flex items-center justify-center text-white font-medium text-sm">
+              <?= substr(html_escape($logged_in_user['username'] ?? 'User'), 0, 1); ?>
+            </div>
+            <div class="hidden md:block">
+              <p class="text-sm font-medium text-neutral-800"><?= html_escape($logged_in_user['username'] ?? 'User'); ?></p>
+              <p class="text-xs text-neutral-500"><?= html_escape($logged_in_user['role'] ?? 'Role'); ?></p>
+            </div>
           </div>
         </div>
         
-        <div class="flex items-center space-x-6">
-          <div class="hidden lg:flex items-center space-x-3 bg-white/5 rounded-2xl px-4 py-2 border border-white/10">
-            <div class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-              <?= strtoupper(substr(html_escape($logged_in_user['username'] ?? 'User'), 0, 1)) ?>
-            </div>
-            <div class="text-sm">
-              <div class="font-semibold text-white"><?= html_escape($logged_in_user['username'] ?? 'User'); ?></div>
-              <div class="text-gray-400 text-xs"><?= html_escape($logged_in_user['role'] ?? 'User'); ?></div>
-            </div>
-          </div>
-          
-          <a href="<?=site_url('reg/logout');?>" 
-             class="flex items-center space-x-3 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold px-6 py-3 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300">
-             <i class="fas fa-sign-out-alt"></i>
-             <span>Logout</span>
-          </a>
-        </div>
+        <a href="<?=site_url('reg/logout');?>" 
+           class="flex items-center space-x-2 bg-gradient-to-r from-primary-600 to-accent-500 text-white font-medium px-5 py-2.5 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 hover:scale-105">
+           <i class="fas fa-sign-out-alt"></i>
+           <span class="hidden sm:inline">Logout</span>
+        </a>
+        
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden p-2 rounded-lg bg-neutral-100 text-neutral-600">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <div class="max-w-8xl mx-auto py-10 px-6">
-    <div class="premium-glass rounded-3xl overflow-hidden animate-fade-in">
-      
-      <!-- Premium Welcome Section -->
-      <?php if(!empty($logged_in_user)): ?>
-        <div class="relative overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-          <div class="relative p-10">
-            <div class="flex flex-col lg:flex-row justify-between items-center">
-              <div class="text-center lg:text-left">
-                <h2 class="text-4xl lg:text-5xl font-black mb-4">Welcome back, <span class="gradient-text"><?= html_escape($logged_in_user['username']); ?></span>!</h2>
-                <p class="text-xl text-gray-300">Role: <span class="font-bold text-white"><?= html_escape($logged_in_user['role']); ?></span></p>
-              </div>
-              <div class="mt-6 lg:mt-0">
-                <div class="flex items-center space-x-4 bg-white/5 rounded-2xl px-6 py-4 border border-white/10">
-                  <i class="fas fa-calendar-star text-blue-400 text-2xl"></i>
-                  <div>
-                    <div class="text-white font-semibold"><?= date('l, F j, Y'); ?></div>
-                    <div class="text-gray-400 text-sm">System Dashboard</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div class="max-w-7xl mx-auto py-8 px-4 relative z-10">
+    <div class="dashboard-grid">
+      <!-- Sidebar Navigation -->
+      <div class="sidebar-nav">
+        <div class="glass-effect rounded-2xl shadow-xl overflow-hidden fade-in mb-6">
+          <div class="p-6 border-b border-neutral-200/50">
+            <h2 class="text-lg font-bold text-neutral-800 flex items-center">
+              <i class="fas fa-tachometer-alt mr-3 text-primary-500"></i>
+              Dashboard
+            </h2>
           </div>
-        </div>
-      <?php else: ?>
-        <div class="mb-6 bg-red-500/20 text-red-300 px-6 py-4 rounded-2xl border border-red-500/30 text-center">
-          <i class="fas fa-exclamation-triangle mr-2"></i>
-          Logged in user not found
-        </div>
-      <?php endif; ?>
-
-      <!-- Premium Statistics Dashboard -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 p-8">
-        <div class="stats-gradient-1 rounded-2xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300">
-          <div class="flex justify-between items-center">
-            <div>
-              <p class="text-blue-100 text-sm font-semibold uppercase tracking-wide">Total Users</p>
-              <h3 class="text-3xl font-black text-white mt-2"><?= count($users); ?></h3>
-            </div>
-            <div class="bg-white/20 p-4 rounded-2xl">
-              <i class="fas fa-users text-white text-2xl"></i>
-            </div>
-          </div>
-          <div class="mt-4 flex items-center text-blue-100 text-sm">
-            <i class="fas fa-chart-line mr-2"></i>
-            <span>All system users</span>
-          </div>
-        </div>
-        
-        <div class="stats-gradient-2 rounded-2xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300">
-          <div class="flex justify-between items-center">
-            <div>
-              <p class="text-pink-100 text-sm font-semibold uppercase tracking-wide">Admin Users</p>
-              <h3 class="text-3xl font-black text-white mt-2">
-                <?php
-                  $adminCount = 0;
-                  foreach($users as $user) {
-                    if($user['role'] === 'admin') $adminCount++;
-                  }
-                  echo $adminCount;
-                ?>
-              </h3>
-            </div>
-            <div class="bg-white/20 p-4 rounded-2xl">
-              <i class="fas fa-user-shield text-white text-2xl"></i>
-            </div>
-          </div>
-          <div class="mt-4 flex items-center text-pink-100 text-sm">
-            <i class="fas fa-shield-alt mr-2"></i>
-            <span>Administrative access</span>
-          </div>
-        </div>
-        
-        <div class="stats-gradient-3 rounded-2xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300">
-          <div class="flex justify-between items-center">
-            <div>
-              <p class="text-cyan-100 text-sm font-semibold uppercase tracking-wide">Active Today</p>
-              <h3 class="text-3xl font-black text-white mt-2">
-                <?php
-                  $activeCount = rand(3, count($users));
-                  echo $activeCount;
-                ?>
-              </h3>
-            </div>
-            <div class="bg-white/20 p-4 rounded-2xl">
-              <i class="fas fa-user-check text-white text-2xl"></i>
-            </div>
-          </div>
-          <div class="mt-4 flex items-center text-cyan-100 text-sm">
-            <i class="fas fa-bolt mr-2"></i>
-            <span>Currently active</span>
-          </div>
-        </div>
-        
-        <div class="stats-gradient-4 rounded-2xl p-6 shadow-2xl transform hover:scale-105 transition-all duration-300">
-          <div class="flex justify-between items-center">
-            <div>
-              <p class="text-yellow-100 text-sm font-semibold uppercase tracking-wide">New This Week</p>
-              <h3 class="text-3xl font-black text-white mt-2">
-                <?php
-                  $newCount = rand(1, 5);
-                  echo $newCount;
-                ?>
-              </h3>
-            </div>
-            <div class="bg-white/20 p-4 rounded-2xl">
-              <i class="fas fa-user-plus text-white text-2xl"></i>
-            </div>
-          </div>
-          <div class="mt-4 flex items-center text-yellow-100 text-sm">
-            <i class="fas fa-star mr-2"></i>
-            <span>Recently added</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Premium Search and Actions Bar -->
-      <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 p-8 pb-6">
-        <div class="text-center xl:text-left">
-          <h1 class="text-3xl font-black flex items-center justify-center xl:justify-start space-x-4">
-            <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-2xl">
-              <i class="fas fa-address-book text-white text-2xl"></i>
-            </div>
-            <span class="gradient-text">User Directory</span>
-          </h1>
-          <p class="text-gray-400 mt-3 text-lg">Manage enterprise user accounts and permissions</p>
-        </div>
-        
-        <div class="flex flex-col sm:flex-row gap-4 w-full xl:w-auto">
-          <!-- Premium Search Bar -->
-          <form method="get" action="<?=site_url('users');?>" class="flex w-full sm:w-80">
-            <div class="relative flex-grow">
-              <input 
-                type="text" 
-                name="q" 
-                value="<?=html_escape($_GET['q'] ?? '')?>" 
-                placeholder="Search users by name, email, or role..." 
-                class="search-input w-full rounded-l-2xl px-5 py-4 pl-12 focus:outline-none text-lg">
-              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <i class="fas fa-search text-gray-400 text-lg"></i>
-              </div>
-            </div>
-            <button type="submit" class="btn-primary rounded-r-2xl px-6 flex items-center space-x-2 text-lg font-semibold">
-              <i class="fas fa-search"></i>
-              <span class="hidden sm:block">Search</span>
-            </button>
-          </form>
           
-          <!-- Premium Create User Button -->
-          <a href="<?=site_url('users/create')?>"
-             class="btn-success rounded-2xl px-8 py-4 shadow-2xl flex items-center justify-center space-x-3 text-lg font-semibold">
-            <i class="fas fa-user-plus"></i>
-            <span>Create User</span>
-          </a>
+          <div class="p-4">
+            <ul class="space-y-1">
+              <li>
+                <a href="#" class="sidebar-item active flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
+                  <i class="fas fa-users w-5 text-center text-primary-500"></i>
+                  <span>User Directory</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
+                  <i class="fas fa-chart-bar w-5 text-center text-amber-500"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
+                  <i class="fas fa-cog w-5 text-center text-neutral-500"></i>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
+                  <i class="fas fa-shield-alt w-5 text-center text-emerald-500"></i>
+                  <span>Security</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
+                  <i class="fas fa-file-alt w-5 text-center text-purple-500"></i>
+                  <span>Reports</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="glass-effect rounded-2xl shadow-xl overflow-hidden fade-in">
+          <div class="p-6 border-b border-neutral-200/50">
+            <h2 class="text-lg font-bold text-neutral-800 flex items-center">
+              <i class="fas fa-chart-line mr-3 text-primary-500"></i>
+              Quick Stats
+            </h2>
+          </div>
+          
+          <div class="p-4 space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm text-neutral-600">Active Sessions</p>
+                <p class="text-lg font-bold text-neutral-800">24</p>
+              </div>
+              <div class="p-2 rounded-lg bg-primary-100 text-primary-600">
+                <i class="fas fa-user-clock"></i>
+              </div>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm text-neutral-600">Storage Used</p>
+                <p class="text-lg font-bold text-neutral-800">68%</p>
+              </div>
+              <div class="p-2 rounded-lg bg-amber-100 text-amber-600">
+                <i class="fas fa-database"></i>
+              </div>
+            </div>
+            
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="text-sm text-neutral-600">System Health</p>
+                <p class="text-lg font-bold text-neutral-800">98%</p>
+              </div>
+              <div class="p-2 rounded-lg bg-emerald-100 text-emerald-600">
+                <i class="fas fa-heartbeat"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Premium User Cards Grid -->
-      <div class="p-8 pt-2">
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
-          <?php foreach(html_escape($users) as $user): ?>
-            <div class="premium-card rounded-3xl overflow-hidden animate-slide-in">
-              <!-- Premium Card Header -->
-              <div class="relative">
-                <div class="h-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
-                <div class="absolute -top-6 right-6">
-                  <div class="user-avatar w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-2xl">
-                    <?= strtoupper(substr($user['username'], 0, 2)) ?>
-                  </div>
+      
+      <!-- Main Dashboard Content -->
+      <div>
+        <div class="glass-effect rounded-2xl shadow-xl overflow-hidden fade-in">
+          
+          <!-- Welcome Section -->
+          <?php if(!empty($logged_in_user)): ?>
+            <div class="bg-gradient-to-r from-primary-600 to-accent-500 text-white p-8 relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="relative z-10 flex flex-col md:flex-row justify-between items-center">
+                <div>
+                  <h2 class="text-3xl font-bold mb-2">Welcome back, <?= html_escape($logged_in_user['username']); ?>!</h2>
+                  <p class="text-primary-100 text-lg">Role: <span class="font-semibold"><?= html_escape($logged_in_user['role']); ?></span></p>
                 </div>
-              </div>
-              
-              <div class="p-6">
-                <!-- User Info -->
-                <div class="flex justify-between items-start mb-5">
-                  <div class="flex-1 mr-4">
-                    <h3 class="text-xl font-black text-white mb-1"><?=($user['username']);?></h3>
-                    <p class="text-gray-400 text-sm font-medium">ID: #<?=($user['id']);?></p>
+                <div class="mt-4 md:mt-0">
+                  <div class="flex items-center space-x-2 bg-white/20 rounded-xl px-4 py-3 backdrop-blur-sm">
+                    <i class="fas fa-calendar-day"></i>
+                    <span><?= date('l, F j, Y'); ?></span>
                   </div>
-                  
-                  <!-- Premium Role Badge -->
-                  <?php
-                    $roleClass = 'role-user';
-                    if($user['role'] === 'admin') {
-                      $roleClass = 'role-admin';
-                    } elseif($user['role'] === 'manager') {
-                      $roleClass = 'role-manager';
-                    } elseif($user['role'] === 'editor') {
-                      $roleClass = 'role-editor';
-                    }
-                  ?>
-                  <span class="role-badge <?= $roleClass; ?>">
-                    <i class="fas fa-user-tag mr-2"></i>
-                    <?=($user['role']);?>
-                  </span>
-                </div>
-                
-                <!-- Email -->
-                <div class="flex items-center mb-6 p-4 bg-white/5 rounded-2xl border border-white/10">
-                  <div class="bg-blue-500/20 p-3 rounded-xl mr-4">
-                    <i class="fas fa-envelope text-blue-400"></i>
-                  </div>
-                  <p class="text-gray-300 font-medium truncate"><?=($user['email']);?></p>
-                </div>
-                
-                <!-- Premium Action Buttons -->
-                <div class="flex justify-between space-x-3">
-                  <?php if($logged_in_user['role'] === 'admin' || $logged_in_user['id'] == $user['id']): ?>
-                    <a href="<?=site_url('users/update/'.$user['id']);?>"
-                       class="action-btn flex-1 flex items-center justify-center space-x-2 bg-blue-500/20 text-blue-400 px-4 py-3 rounded-xl border border-blue-500/30 hover:bg-blue-500/30 transition-all duration-300">
-                      <i class="fas fa-edit"></i>
-                      <span class="font-semibold">Update</span>
-                    </a>
-                  <?php endif; ?>
-
-                  <?php if($logged_in_user['role'] === 'admin'): ?>
-                    <a href="<?=site_url('users/delete/'.$user['id']);?>"
-                       onclick="return confirm('Are you sure you want to delete this user? This action cannot be undone.');"
-                       class="action-btn flex-1 flex items-center justify-center space-x-2 bg-red-500/20 text-red-400 px-4 py-3 rounded-xl border border-red-500/30 hover:bg-red-500/30 transition-all duration-300">
-                      <i class="fas fa-trash-alt"></i>
-                      <span class="font-semibold">Delete</span>
-                    </a>
-                  <?php endif; ?>
                 </div>
               </div>
             </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
+          <?php else: ?>
+            <div class="mb-6 bg-red-100 text-red-700 px-4 py-3 rounded-lg shadow text-center">
+              Logged in user not found
+            </div>
+          <?php endif; ?>
 
-      <!-- Premium Pagination -->
-      <div class="p-8 pt-4">
-        <div class="pagination">
-          <?= $page; ?>
+          <!-- Statistics Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-8">
+            <div class="stats-card rounded-xl p-6 shadow-soft card-hover">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="text-neutral-600 text-sm font-medium">Total Users</p>
+                  <h3 class="text-2xl font-bold mt-1 text-neutral-800"><?= count($users); ?></h3>
+                  <p class="text-xs text-neutral-500 mt-1">Across all departments</p>
+                </div>
+                <div class="bg-primary-100 text-primary-600 p-3 rounded-xl">
+                  <i class="fas fa-users text-xl"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="stats-card rounded-xl p-6 shadow-soft card-hover">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="text-neutral-600 text-sm font-medium">Admin Users</p>
+                  <h3 class="text-2xl font-bold mt-1 text-neutral-800">
+                    <?php
+                      $adminCount = 0;
+                      foreach($users as $user) {
+                        if($user['role'] === 'admin') $adminCount++;
+                      }
+                      echo $adminCount;
+                    ?>
+                  </h3>
+                  <p class="text-xs text-neutral-500 mt-1">With full access</p>
+                </div>
+                <div class="bg-amber-100 text-amber-600 p-3 rounded-xl">
+                  <i class="fas fa-user-shield text-xl"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="stats-card rounded-xl p-6 shadow-soft card-hover">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="text-neutral-600 text-sm font-medium">Active Today</p>
+                  <h3 class="text-2xl font-bold mt-1 text-neutral-800">
+                    <?php
+                      $activeCount = rand(3, count($users));
+                      echo $activeCount;
+                    ?>
+                  </h3>
+                  <p class="text-xs text-neutral-500 mt-1">Logged in today</p>
+                </div>
+                <div class="bg-emerald-100 text-emerald-600 p-3 rounded-xl">
+                  <i class="fas fa-user-check text-xl"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="stats-card rounded-xl p-6 shadow-soft card-hover">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="text-neutral-600 text-sm font-medium">New This Week</p>
+                  <h3 class="text-2xl font-bold mt-1 text-neutral-800">
+                    <?php
+                      $newCount = rand(1, 5);
+                      echo $newCount;
+                    ?>
+                  </h3>
+                  <p class="text-xs text-neutral-500 mt-1">Recently added</p>
+                </div>
+                <div class="bg-purple-100 text-purple-600 p-3 rounded-xl">
+                  <i class="fas fa-user-plus text-xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search and Actions Bar -->
+          <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 p-8 pb-4">
+            <div>
+              <h1 class="text-2xl font-bold text-neutral-800 flex items-center">
+                <i class="fas fa-address-book mr-3 text-primary-500"></i>
+                User Directory
+              </h1>
+              <p class="text-neutral-600 mt-1">Manage all users in your organization</p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+              <!-- Search Bar -->
+              <form method="get" action="<?=site_url('users');?>" class="flex w-full sm:w-64">
+                <div class="relative flex-grow">
+                  <input 
+                    type="text" 
+                    name="q" 
+                    value="<?=html_escape($_GET['q'] ?? '')?>" 
+                    placeholder="Search users..." 
+                    class="w-full border border-neutral-300 bg-white rounded-l-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-neutral-800 shadow-soft">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-neutral-400"></i>
+                  </div>
+                </div>
+                <button type="submit" class="bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 text-white px-5 rounded-r-xl transition-all duration-300 flex items-center shadow-medium">
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+              
+              <!-- Create User Button -->
+              <a href="<?=site_url('users/create')?>"
+                 class="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-medium px-5 py-3 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 flex items-center justify-center space-x-2 hover:scale-105">
+                <i class="fas fa-user-plus"></i>
+                <span>Create User</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- User Cards Grid -->
+          <div class="p-8 pt-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <?php foreach(html_escape($users) as $user): ?>
+                <div class="user-card bg-white rounded-xl shadow-soft border border-neutral-200/60 overflow-hidden card-hover">
+                  <!-- Card Header with Gradient -->
+                  <div class="h-2 bg-gradient-to-r from-primary-500 to-accent-500"></div>
+                  
+                  <div class="p-6">
+                    <!-- User Info -->
+                    <div class="flex justify-between items-start mb-4">
+                      <div class="flex items-center space-x-3">
+                        <div class="user-avatar <?= $user['role']; ?>">
+                          <?= substr($user['username'], 0, 1); ?>
+                        </div>
+                        <div>
+                          <h3 class="text-lg font-bold text-neutral-800"><?=($user['username']);?></h3>
+                          <p class="text-neutral-500 text-xs mt-1">ID: #<?=($user['id']);?></p>
+                        </div>
+                      </div>
+                      
+                      <!-- Role Badge -->
+                      <?php
+                        $roleColor = 'bg-neutral-100 text-neutral-800';
+                        $roleIcon = 'fas fa-user';
+                        if($user['role'] === 'admin') {
+                          $roleColor = 'bg-red-100 text-red-800';
+                          $roleIcon = 'fas fa-user-shield';
+                        } elseif($user['role'] === 'manager') {
+                          $roleColor = 'bg-purple-100 text-purple-800';
+                          $roleIcon = 'fas fa-user-tie';
+                        } elseif($user['role'] === 'editor') {
+                          $roleColor = 'bg-blue-100 text-blue-800';
+                          $roleIcon = 'fas fa-user-edit';
+                        }
+                      ?>
+                      <span class="role-badge <?= $roleColor; ?>">
+                        <i class="<?= $roleIcon; ?> mr-1"></i>
+                        <?=($user['role']);?>
+                      </span>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="flex items-center mb-6">
+                      <div class="bg-primary-50 p-2 rounded-lg mr-3">
+                        <i class="fas fa-envelope text-primary-500"></i>
+                      </div>
+                      <p class="text-neutral-700 truncate"><?=($user['email']);?></p>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex justify-between">
+                      <?php if($logged_in_user['role'] === 'admin' || $logged_in_user['id'] == $user['id']): ?>
+                        <a href="<?=site_url('users/update/'.$user['id']);?>"
+                           class="flex items-center space-x-2 bg-primary-50 text-primary-700 px-4 py-2.5 rounded-lg hover:bg-primary-100 transition-all duration-300 hover:scale-105 shadow-soft">
+                          <i class="fas fa-edit"></i>
+                          <span>Update</span>
+                        </a>
+                      <?php endif; ?>
+
+                      <?php if($logged_in_user['role'] === 'admin'): ?>
+                        <a href="<?=site_url('users/delete/'.$user['id']);?>"
+                           onclick="return confirm('Are you sure you want to delete this user?');"
+                           class="flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2.5 rounded-lg hover:bg-red-100 transition-all duration-300 hover:scale-105 shadow-soft">
+                          <i class="fas fa-trash-alt"></i>
+                          <span>Delete</span>
+                        </a>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="p-8 pt-4">
+            <div class="pagination">
+              <?= $page; ?>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Premium Footer -->
-  <footer class="premium-glass mt-16 border-t border-white/10">
-    <div class="max-w-8xl mx-auto px-8 py-12">
-      <div class="flex flex-col lg:flex-row justify-between items-center">
-        <div class="flex items-center space-x-4 mb-6 lg:mb-0">
-          <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-2xl">
-            <i class="fas fa-crown text-white text-2xl"></i>
+  <!-- Footer -->
+  <footer class="glass-effect-dark text-white mt-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center space-x-3 mb-4 md:mb-0">
+          <div class="bg-gradient-to-br from-primary-600 to-accent-500 p-2 rounded-lg">
+            <i class="fas fa-users-cog text-white"></i>
           </div>
           <div>
-            <h3 class="text-xl font-black gradient-text">Enterprise User Management</h3>
-            <p class="text-gray-400 text-sm">Premium Corporate Platform</p>
+            <span class="text-lg font-semibold">Corporate User Management</span>
+            <p class="text-neutral-400 text-sm mt-0.5">Enterprise-grade user directory solution</p>
           </div>
         </div>
-        
-        <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm">
-          <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
-          <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a>
-          <a href="#" class="hover:text-white transition-colors duration-300">Security</a>
-          <a href="#" class="hover:text-white transition-colors duration-300">Compliance</a>
-          <a href="#" class="hover:text-white transition-colors duration-300">Support</a>
-        </div>
-        
-        <div class="mt-6 lg:mt-0 text-gray-400 text-sm">
-          &copy; <?= date('Y'); ?> Enterprise Systems. All rights reserved.
+        <div class="text-neutral-400 text-sm">
+          &copy; <?= date('Y'); ?> All rights reserved. | <span class="text-primary-400">v2.1.5</span>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Enhanced animations and interactions
+    // Add fade-in animation to user cards
     document.addEventListener('DOMContentLoaded', function() {
-      // Add staggered animation to user cards
-      const userCards = document.querySelectorAll('.premium-card');
+      const userCards = document.querySelectorAll('.user-card');
       userCards.forEach((card, index) => {
         card.style.animationDelay = `${index * 0.1}s`;
       });
       
-      // Add floating animation to particles
-      const particles = document.querySelectorAll('.particle');
-      particles.forEach((particle, index) => {
-        particle.style.animationDelay = `${index * 2}s`;
-      });
-      
-      // Add hover effects to stats cards
-      const statsCards = document.querySelectorAll('[class*="stats-gradient-"]');
-      statsCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'scale(1.05) translateY(-5px)';
+      // Add search term highlighting
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchTerm = urlParams.get('q');
+      if (searchTerm) {
+        const userNames = document.querySelectorAll('.user-card h3');
+        userNames.forEach(name => {
+          const originalText = name.textContent;
+          const regex = new RegExp(`(${searchTerm})`, 'gi');
+          const highlightedText = originalText.replace(regex, '<span class="search-highlight">$1</span>');
+          name.innerHTML = highlightedText;
         });
-        
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'scale(1) translateY(0)';
-        });
-      });
+      }
     });
   </script>
 </body>
