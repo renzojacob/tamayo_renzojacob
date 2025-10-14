@@ -32,7 +32,7 @@ class UserController extends Controller {
         $page = isset($_GET['page']) ? $this->io->get('page') : 1;
         $q    = isset($_GET['q']) && !empty($_GET['q']) ? trim($this->io->get('q')) : '';
 
-        $records_per_page = 5;
+        $records_per_page = 6;
         $users = $this->UserModel->page($q, $records_per_page, $page);
 
         $data['users'] = $users['records'];
