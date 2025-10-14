@@ -65,9 +65,6 @@
             'slide-down': 'slideDown 0.6s ease-out',
             'pulse-soft': 'pulseSoft 2s infinite',
             'float': 'float 6s ease-in-out infinite',
-            'bounce-soft': 'bounceSoft 2s infinite',
-            'gradient-shift': 'gradientShift 8s ease infinite',
-            'glow': 'glow 3s ease-in-out infinite alternate',
           },
           keyframes: {
             fadeIn: {
@@ -89,25 +86,11 @@
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
               '50%': { transform: 'translateY(-10px)' },
-            },
-            bounceSoft: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-5px)' },
-            },
-            gradientShift: {
-              '0%, 100%': { backgroundPosition: '0% 50%' },
-              '50%': { backgroundPosition: '100% 50%' },
-            },
-            glow: {
-              '0%': { boxShadow: '0 0 5px rgba(14, 165, 233, 0.5)' },
-              '100%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.8), 0 0 30px rgba(217, 70, 239, 0.6)' },
             }
           },
           backgroundImage: {
             'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
             'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-            'gradient-corporate': 'linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(217, 70, 239, 0.05) 100%)',
-            'gradient-hero': 'linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #d946ef 100%)',
           }
         }
       }
@@ -120,7 +103,7 @@
     }
     
     body {
-      background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+      background-image: url('https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -137,13 +120,6 @@
       background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    
-    .glass-effect-premium {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
     
     .card-hover {
@@ -368,69 +344,6 @@
       gap: 2rem;
     }
     
-    .premium-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
-      border: 1px solid rgba(226, 232, 240, 0.6);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .premium-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #0ea5e9 0%, #8b5cf6 50%, #d946ef 100%);
-      background-size: 200% 200%;
-      animation: gradientShift 8s ease infinite;
-    }
-    
-    .hero-gradient {
-      background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #d946ef 100%);
-      background-size: 200% 200%;
-      animation: gradientShift 8s ease infinite;
-    }
-    
-    .corporate-pattern {
-      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%230ea5e9' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-    }
-    
-    .hover-lift {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .hover-lift:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .glowing-border {
-      position: relative;
-    }
-    
-    .glowing-border::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #0ea5e9, #8b5cf6, #d946ef, #0ea5e9);
-      background-size: 400% 400%;
-      border-radius: inherit;
-      z-index: -1;
-      animation: gradientShift 8s ease infinite;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .glowing-border:hover::before {
-      opacity: 1;
-    }
-    
     .data-visualization {
       background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
       border: 1px solid rgba(14, 165, 233, 0.1);
@@ -463,21 +376,19 @@
   </style>
 </head>
 
-<body class="min-h-screen text-neutral-800 corporate-pattern">
+<body class="min-h-screen text-neutral-800">
 
   <!-- Floating Background Shapes -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
     <div class="floating-shape floating-shape-1"></div>
     <div class="floating-shape floating-shape-2"></div>
-    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-primary-200/10 to-accent-200/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-accent-200/10 to-primary-200/10 rounded-full blur-3xl"></div>
   </div>
 
   <!-- Navbar -->
-  <nav class="glass-effect-premium shadow-lg sticky top-0 z-50 border-b border-white/20">
+  <nav class="glass-effect shadow-lg sticky top-0 z-50 border-b border-white/20">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <div class="bg-gradient-to-br from-primary-600 to-accent-500 p-2.5 rounded-xl shadow-medium glowing-border">
+        <div class="bg-gradient-to-br from-primary-600 to-accent-500 p-2.5 rounded-xl shadow-medium">
           <i class="fas fa-users-cog text-white text-xl"></i>
         </div>
         <div>
@@ -490,7 +401,7 @@
         <div class="hidden md:flex items-center space-x-4">
           <!-- Notifications -->
           <div class="relative">
-            <button class="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-colors hover-lift">
+            <button class="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-colors">
               <i class="fas fa-bell"></i>
             </button>
             <span class="notification-dot"></span>
@@ -498,14 +409,14 @@
           
           <!-- Messages -->
           <div class="relative">
-            <button class="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-colors hover-lift">
+            <button class="p-2 rounded-full bg-neutral-100 text-neutral-600 hover:bg-neutral-200 transition-colors">
               <i class="fas fa-envelope"></i>
             </button>
             <span class="notification-dot bg-amber-500"></span>
           </div>
           
           <!-- User Profile -->
-          <div class="flex items-center space-x-3 bg-white/80 rounded-xl px-3 py-2 shadow-soft border border-white/50 hover-lift">
+          <div class="flex items-center space-x-3 bg-white/80 rounded-xl px-3 py-2 shadow-soft border border-white/50">
             <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-accent-400 flex items-center justify-center text-white font-medium text-sm">
               <?= substr(html_escape($logged_in_user['username'] ?? 'User'), 0, 1); ?>
             </div>
@@ -517,13 +428,13 @@
         </div>
         
         <a href="<?=site_url('reg/logout');?>" 
-           class="flex items-center space-x-2 bg-gradient-to-r from-primary-600 to-accent-500 text-white font-medium px-5 py-2.5 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 hover:scale-105 glowing-border">
+           class="flex items-center space-x-2 bg-gradient-to-r from-primary-600 to-accent-500 text-white font-medium px-5 py-2.5 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 hover:scale-105">
            <i class="fas fa-sign-out-alt"></i>
            <span class="hidden sm:inline">Logout</span>
         </a>
         
         <!-- Mobile Menu Button -->
-        <button class="md:hidden p-2 rounded-lg bg-neutral-100 text-neutral-600 hover-lift">
+        <button class="md:hidden p-2 rounded-lg bg-neutral-100 text-neutral-600">
           <i class="fas fa-bars"></i>
         </button>
       </div>
@@ -535,7 +446,7 @@
     <div class="dashboard-grid">
       <!-- Sidebar Navigation -->
       <div class="sidebar-nav">
-        <div class="glass-effect-premium rounded-2xl shadow-xl overflow-hidden fade-in mb-6">
+        <div class="glass-effect rounded-2xl shadow-xl overflow-hidden fade-in mb-6">
           <div class="p-6 border-b border-neutral-200/50">
             <h2 class="text-lg font-bold text-neutral-800 flex items-center">
               <i class="fas fa-tachometer-alt mr-3 text-primary-500"></i>
@@ -546,31 +457,31 @@
           <div class="p-4">
             <ul class="space-y-1">
               <li>
-                <a href="#" class="sidebar-item active flex items-center space-x-3 p-3 rounded-lg text-neutral-700 hover-lift">
+                <a href="#" class="sidebar-item active flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
                   <i class="fas fa-users w-5 text-center text-primary-500"></i>
                   <span>User Directory</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700 hover-lift">
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
                   <i class="fas fa-chart-bar w-5 text-center text-amber-500"></i>
                   <span>Analytics</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700 hover-lift">
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
                   <i class="fas fa-cog w-5 text-center text-neutral-500"></i>
                   <span>Settings</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700 hover-lift">
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
                   <i class="fas fa-shield-alt w-5 text-center text-emerald-500"></i>
                   <span>Security</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700 hover-lift">
+                <a href="#" class="sidebar-item flex items-center space-x-3 p-3 rounded-lg text-neutral-700">
                   <i class="fas fa-file-alt w-5 text-center text-purple-500"></i>
                   <span>Reports</span>
                 </a>
@@ -580,7 +491,7 @@
         </div>
         
         <!-- Quick Stats -->
-        <div class="glass-effect-premium rounded-2xl shadow-xl overflow-hidden fade-in">
+        <div class="glass-effect rounded-2xl shadow-xl overflow-hidden fade-in">
           <div class="p-6 border-b border-neutral-200/50">
             <h2 class="text-lg font-bold text-neutral-800 flex items-center">
               <i class="fas fa-chart-line mr-3 text-primary-500"></i>
@@ -627,8 +538,8 @@
           </div>
         </div>
         
-        <!-- Data Visualization -->
-        <div class="glass-effect-premium rounded-2xl shadow-xl overflow-hidden fade-in mt-6">
+        <!-- User Distribution Section -->
+        <div class="glass-effect rounded-2xl shadow-xl overflow-hidden fade-in mt-6">
           <div class="p-6 border-b border-neutral-200/50">
             <h2 class="text-lg font-bold text-neutral-800 flex items-center">
               <i class="fas fa-chart-pie mr-3 text-primary-500"></i>
@@ -674,21 +585,19 @@
       
       <!-- Main Dashboard Content -->
       <div>
-        <div class="glass-effect-premium rounded-2xl shadow-xl overflow-hidden fade-in">
+        <div class="glass-effect rounded-2xl shadow-xl overflow-hidden fade-in">
           
           <!-- Welcome Section -->
           <?php if(!empty($logged_in_user)): ?>
-            <div class="hero-gradient text-white p-8 relative overflow-hidden">
+            <div class="bg-gradient-to-r from-primary-600 to-accent-500 text-white p-8 relative overflow-hidden">
               <div class="absolute inset-0 bg-black/10"></div>
-              <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
-              <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-24 -translate-x-24"></div>
               <div class="relative z-10 flex flex-col md:flex-row justify-between items-center">
                 <div>
                   <h2 class="text-3xl font-bold mb-2">Welcome back, <?= html_escape($logged_in_user['username']); ?>!</h2>
                   <p class="text-primary-100 text-lg">Role: <span class="font-semibold"><?= html_escape($logged_in_user['role']); ?></span></p>
                 </div>
                 <div class="mt-4 md:mt-0">
-                  <div class="flex items-center space-x-2 bg-white/20 rounded-xl px-4 py-3 backdrop-blur-sm hover-lift">
+                  <div class="flex items-center space-x-2 bg-white/20 rounded-xl px-4 py-3 backdrop-blur-sm">
                     <i class="fas fa-calendar-day"></i>
                     <span><?= date('l, F j, Y'); ?></span>
                   </div>
@@ -786,7 +695,7 @@
             
             <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
               <!-- Search Bar -->
-              <form method="get" action="<?=site_url('users');?>" class="flex w-full sm:w-64 glowing-border rounded-xl">
+              <form method="get" action="<?=site_url('users');?>" class="flex w-full sm:w-64">
                 <div class="relative flex-grow">
                   <input 
                     type="text" 
@@ -805,7 +714,7 @@
               
               <!-- Create User Button -->
               <a href="<?=site_url('users/create')?>"
-                 class="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-medium px-5 py-3 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 flex items-center justify-center space-x-2 hover:scale-105 glowing-border">
+                 class="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-medium px-5 py-3 rounded-xl shadow-medium hover:shadow-large transition-all duration-300 flex items-center justify-center space-x-2 hover:scale-105">
                 <i class="fas fa-user-plus"></i>
                 <span>Create User</span>
               </a>
@@ -816,9 +725,9 @@
           <div class="p-8 pt-4">
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               <?php foreach(html_escape($users) as $user): ?>
-                <div class="user-card premium-card rounded-xl shadow-soft overflow-hidden card-hover">
+                <div class="user-card bg-white rounded-xl shadow-soft border border-neutral-200/60 overflow-hidden card-hover">
                   <!-- Card Header with Gradient -->
-                  <div class="h-2 hero-gradient"></div>
+                  <div class="h-2 bg-gradient-to-r from-primary-500 to-accent-500"></div>
                   
                   <div class="p-6">
                     <!-- User Info -->
@@ -866,7 +775,7 @@
                     <div class="flex justify-between">
                       <?php if($logged_in_user['role'] === 'admin' || $logged_in_user['id'] == $user['id']): ?>
                         <a href="<?=site_url('users/update/'.$user['id']);?>"
-                           class="flex items-center space-x-2 bg-primary-50 text-primary-700 px-4 py-2.5 rounded-lg hover:bg-primary-100 transition-all duration-300 hover:scale-105 shadow-soft hover-lift">
+                           class="flex items-center space-x-2 bg-primary-50 text-primary-700 px-4 py-2.5 rounded-lg hover:bg-primary-100 transition-all duration-300 hover:scale-105 shadow-soft">
                           <i class="fas fa-edit"></i>
                           <span>Update</span>
                         </a>
@@ -875,7 +784,7 @@
                       <?php if($logged_in_user['role'] === 'admin'): ?>
                         <a href="<?=site_url('users/delete/'.$user['id']);?>"
                            onclick="return confirm('Are you sure you want to delete this user?');"
-                           class="flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2.5 rounded-lg hover:bg-red-100 transition-all duration-300 hover:scale-105 shadow-soft hover-lift">
+                           class="flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2.5 rounded-lg hover:bg-red-100 transition-all duration-300 hover:scale-105 shadow-soft">
                           <i class="fas fa-trash-alt"></i>
                           <span>Delete</span>
                         </a>
